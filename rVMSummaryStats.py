@@ -4,6 +4,8 @@ import urllib2
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.stats as stats
+import pylab
 
 # Reading data
 target_url = ("""https://archive.ics.uci.edu/ml/machine-learning-\
@@ -76,8 +78,15 @@ final = {colCount_[0]: colData_.count(colCount_[0]), colCount_[1]: colData_.coun
 print "Counts for Each Value of Categorical Label\n{}." .format(final)
 
 """ Visualization """
+
 plt.bar(range(len(final)), final.values())
 plt.xticks(range(len(final)), list(final.keys()))
 plt.title("R and M Summary")
 plt.savefig("R and M Summary")
 plt.show()
+
+# Probability plot
+
+stats.probplot(colData, dist="norm", plot=pylab)
+pylab.savefig("Probability Plot")
+pylab.show()
