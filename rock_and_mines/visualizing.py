@@ -1,8 +1,12 @@
 __author__ = 'prabhath'
 
-from main import MainCollection
 from random import uniform
+
 import matplotlib.pyplot as plot
+import pandas as pd
+
+from rock_and_mines.main import MainCollection
+
 
 # Getting data
 
@@ -65,7 +69,19 @@ def correlation__(df):
     plot.show()
 
 
+def heat_plot(df):
+    """Heat plot of correlation using pandas"""
+    cor_plot = pd.DataFrame(df.corr())
+
+    plot.pcolor(cor_plot)
+    plot.title("Heat map showing attributes cross correlation")
+    plot.show()
+
+
+
+
 if __name__ == "__main__":
 
     correlation_(df)
     correlation__(df)
+    heat_plot(df)

@@ -1,7 +1,9 @@
 __author__ = 'prabhath'
 
-from main import MainCollection
 import numpy as np
+
+from rock_and_mines.main import MainCollection
+
 
 data = MainCollection()
 df = data.get_data()
