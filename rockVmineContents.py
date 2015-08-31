@@ -1,7 +1,5 @@
 import urllib2
-import pandas
 import sys
-from pandas.io.common import urlopen
 
 
 # Reading data
