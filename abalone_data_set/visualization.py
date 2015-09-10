@@ -1,8 +1,9 @@
 __author__ = 'prabhath'
 
 from main import MainCollection
-import pandas as pd
 import matplotlib.pyplot as plot
+
+fig = plot.gcf()
 
 data = MainCollection()
 df = data.get_data()
@@ -11,7 +12,6 @@ summary = df.describe()
 minRings = summary.iloc[3, 7]
 maxRings = summary.iloc[7, 7]
 nrows = len(df.index)
-print df.head()
 
 for i in range(nrows):
     # Plot the data
@@ -24,8 +24,8 @@ plot.ylabel("Attribute Values")
 plot.savefig("Parallel_Coordinate_Plot_for_Abalone_Data")
 plot.show()
 
-import numpy as np
-
-a = np.random.rand(1,10)
-plot.plot(a)
+# Heat Map (relation between the targets and values)
+colMat = df.iloc[:, 1:9].corr()
+plot.pcolor(colMat)
+plot.savefig("HeatMap.png")
 plot.show()
