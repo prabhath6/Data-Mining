@@ -60,6 +60,32 @@ def coordinateplot(df):
     plt.title("Parallel coordinate plot")
     plt.savefig("Parallel coordinate plot")
 
+
+def colorplot(df):
+    """
+    :param df:
+    :return: heat map
+    """
+    df = df.iloc[:, 1:len(df.columns)]
+    summary = df.describe()
+    normalizedvalues = df
+
+    ncols = len(df.columns)
+
+    for i in range(ncols):
+        mean = summary.iloc[1, i]
+        sd = summary.iloc[2, i]
+
+        normalizedvalues.iloc[:, i:(i+1)] = (normalizedvalues.iloc[:, i:(i+1)] - mean) / sd
+
+    colr = normalizedvalues.iloc[:, 1:10].corr()
+    plt.pcolor(colr)
+    plt.title("Heat map")
+    plt.savefig("Heat map")
+    plt.show()
+
+
 if __name__ == "__main__":
-    #boxplot(df)
+    boxplot(df)
     coordinateplot(df)
+    colorplot(df)
