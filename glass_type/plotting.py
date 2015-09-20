@@ -30,6 +30,7 @@ def boxplot(df):
     plt.boxplot(normalizedvalues.values[0:len(normalizedvalues.values)])
     plt.xlabel("Attribute Index")
     plt.ylabel("Quartile Ranges - Normalized ")
+    plt.savefig("Box plot")
     plt.show()
 
 
@@ -56,9 +57,11 @@ def coordinateplot(df):
         data_df = normalizedvalues.iloc[i, 1 : (ncols - 1)]
         colorlabel = normalizedvalues.iloc[i, (ncols - 1)]/7.0
         data_df.plot(color=plt.cm.RdYlBu(colorlabel), alpha=0.5)
+
+    plt.xlabel("Attribute Index")
+    plt.ylabel(("Attribute Values"))
+    plt.savefig("Co-ordinate plot")
     plt.show()
-    plt.title("Parallel coordinate plot")
-    plt.savefig("Parallel coordinate plot")
 
 
 def colorplot(df):
