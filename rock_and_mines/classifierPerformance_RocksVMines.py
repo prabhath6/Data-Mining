@@ -139,6 +139,7 @@ pl.xlabel('False positive rate.')
 pl.ylabel('True positive rate.')
 pl.title("In sample ROC rocks versus mines")
 pl.legend(loc="lower right")
+pl.savefig("In sample ROC rocks versus mines")
 pl.show()
 
 """ Roc curve for out of sample curve. """
@@ -157,4 +158,5 @@ pl.xlabel('False positive rate.')
 pl.ylabel('True positive rate.')
 pl.title("Out of sample ROC rocks versus mines")
 pl.legend(loc="lower right")
+pl.savefig("Out of sample ROC rocks versus mines")
 pl.show()
